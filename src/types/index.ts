@@ -1,2 +1,5 @@
 export type * from './jedi.type'
-export { forceFactory } from './jedi.type'
+export type * from './mtg.type'
+
+export * from './jedi.type'
+export * from './mtg.type'
