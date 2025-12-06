@@ -1,7 +1,7 @@
 # nestjs-sample-app (`v0.1.0`)
 
 ### Overview
-v0.1.0 We will be exploring `controllers` and what they are responsible for in a NestJS application.
+`v0.1.0` -- I will explore `controllers` and what they are responsible for in a NestJS application.
 
 ## Responsibilities of a `controller`
 1. Handling of `requests` coming into the application
@@ -17,7 +17,7 @@ v0.1.0 We will be exploring `controllers` and what they are responsible for in a
 </details>
 
 ## Steps
-> **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app
+> **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app later on
 1. Create a new controller with a simple GET route -- `v0.1.1`
     <details>
     <summary>expand for steps</summary>
@@ -45,7 +45,27 @@ v0.1.0 We will be exploring `controllers` and what they are responsible for in a
     </details>
 1. Modify existing `controllers` and add new ones to demonstrate passing data via request to the `controllers` -- `v0.1.3`
     <details>
-    <summary>expand for steps</summary>
+    <summary>expand for adding url params</summary>
 
     1. Remove the `app.controller.ts` from the `app.module.ts` file since we no longer need it (these basic setup files will be deleted later in this step)
+    1. Modify the `mtg.type.ts` type `Card` to include a new field called `_id`, add some fake data in our `const cards` array.
+    1. Add a new `GET` route on the `mtg.controller.ts` but using the `findOne()` method this time.
+    1. Add a `@Param()` decorator to retrieve an `id` from the URL path params and add the decorator `@Get('cards/:id')` to the top of the `findOne()` function.
+    1. Use `Array.prototype.find()` to search the `cards` array for any that contain the `id` value passed to the controller function
+    </details>
+    <details>
+    <summary>expand for adding query string</summary>
+
+    1. Modify the existing `@Get('cards')` route and add some `@Query()` decorators to retrieve `cards` by  `color` and `type`
+    1. Include optional params for both `color` and `type` to the `findAll()` function
+    1. Filter the hardcoded card array by the two params (optionally)
+    1. If not already, run the app using `npm run start:dev` and test the changes for using query string params
+    </details>
+    <details>
+    <summary>expand for adding request body</summary>
+
+    1. Add a `@Post()` decorator to the `JediController` and include an empty `async create()` function call underneath it.
+    1. Add the a `@Body()` decorator to the params area of the `create` call and add the param `request: Jedi`.
+    1. Add the jedi object from the `POST` to the jedi array (after changing it to not be `const`)
+    1. Run using `npm run start:dev` and test the new `POST` route
     </details>

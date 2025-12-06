@@ -1,7 +1,8 @@
 export type Card = {
+    _id: string,
     name: string,
-    color: COLOR,
-    type: TYPE
+    color?: COLOR,
+    type?: TYPE
 }
 
 export enum COLOR {
