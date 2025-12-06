@@ -1,19 +1,71 @@
-# nestjs-sample-app (`v0.0.0-init`)
+# nestjs-sample-app (`v0.1.0`)
 
 ### Overview
-v0.0.0-init introduces the basic structure of the API. It will include all package installation as well as repo setup.
+`v0.1.0` -- I will explore `controllers` and what they are responsible for in a NestJS application.
 
-## NestJS init
-1. Install NestJS and init -- [official docs](https://docs.nestjs.com/first-steps)
-    1. run `npm i -g @nestjs/cli`
-    2. run `nest new nestjs-sample-app`
-        <details>
-          <summary>Thoughts on cli init</summary>
-          
-            - The `new` command places the project in a folder named after the app name passed in. I didnt care for this duplicate folder so I moved the files out and deleted it. Recommend setting up the app in your collective git folder and creating the git repo after.
-            - I don't care for having unit test files located in the same directory structure as the source files; however, I'm going to keep this structure to try it because I can see an argument for it encouraging unit test writing by just making it easier to find the associated test file.
-            - Setting up the app through the CLI seems to offer pretty much all the basics an app would need. Typescript setup, linting setup, a couple starter files that setup the NestJS pattern, and setting up both unit test and e2e tests.
-        </details>
-    3. There is an option to use [Fastify](https://fastify.dev/) but I will opt to use the default [expressJS](https://expressjs.com/)
-    4. Thats pretty much it for setup. The Nest CLI makes it incredibly easy for learning.
-    5. Run `npm start` or `npm run start:dev` for a watch run and send a request to `GET http://localhost:3000/` and watch as the app greets you warmly.
+## Responsibilities of a `controller`
+1. Handling of `requests` coming into the application
+1. Sending `responses` back to the client
+1. The `routing` mechanism will send the request to the appropriate `controller` from the `service` layer.
+
+<details>
+  <summary>Under the Hood</summary>
+
+  - `controllers` leverage `classes` and `decorators`
+  - `decorators` link `classes` with the necessary metadata
+  - this link is then used to create a routing map to connect requests with the appropriate `controllers`
+</details>
+
+## Steps
+> **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app later on
+1. Create a new controller with a simple GET route -- `v0.1.1`
+    <details>
+    <summary>expand for steps</summary>
+
+    1. Run `npm run start:dev` to run the app in `watch` to test changes on the fly.
+    1. Move the `app.controller` files to a `controllers` folder and creating an `index.ts` for the folder to make imports slimmer.
+    1. Hit the default route using Postman (or similar tool) and make sure the app still works.
+    1. Create a `jedi.controller.ts` file under the `controllers` folder (this can also be done via CLI)
+    1. Create a `jedi.type.ts` file under a new folder `types` and import it into our new controller (I will also `index` this because I like keeping my imports slim)
+        1. Caveat - when typing a `controller` return type, the framework enforces it be imported as a `type`
+    1. Change the GET functions return type to `Jedi[]` in `jedi.controller.ts` and add some hardcoded return objects
+    1. Add the new controller to the `app.module.ts` file
+    1. Send a request to the apps new route via Postman
+    </details>
+1. Create a second `controller` for a Magic the Gathering search -- `v0.1.2`
+    <details>
+    <summary>expand for steps</summary>
+
+    1. Run `npm run start:dev` to run the app in `watch` to test changes on the fly if it isn't still on.
+    1. Create an `mtg.controller.ts` under the `controllers` folder give it a void `findAll()` function as a `GET` route.
+    1. Add the new `MTGController` to the `app.module.ts` file.
+    1. Create a couple of basic `types` for our new `MTGController` to use.
+    1. Create some hardcoded mock data for the new route to return.
+    1. Send a Postman request to the new route and watch it work.
+    </details>
+1. Modify existing `controllers` and add new ones to demonstrate passing data via request to the `controllers` -- `v0.1.3`
+    <details>
+    <summary>expand for adding url params</summary>
+
+    1. Remove the `app.controller.ts` from the `app.module.ts` file since we no longer need it (these basic setup files will be deleted later in this step)
+    1. Modify the `mtg.type.ts` type `Card` to include a new field called `_id`, add some fake data in our `const cards` array.
+    1. Add a new `GET` route on the `mtg.controller.ts` but using the `findOne()` method this time.
+    1. Add a `@Param()` decorator to retrieve an `id` from the URL path params and add the decorator `@Get('cards/:id')` to the top of the `findOne()` function.
+    1. Use `Array.prototype.find()` to search the `cards` array for any that contain the `id` value passed to the controller function
+    </details>
+    <details>
+    <summary>expand for adding query string</summary>
+
+    1. Modify the existing `@Get('cards')` route and add some `@Query()` decorators to retrieve `cards` by  `color` and `type`
+    1. Include optional params for both `color` and `type` to the `findAll()` function
+    1. Filter the hardcoded card array by the two params (optionally)
+    1. If not already, run the app using `npm run start:dev` and test the changes for using query string params
+    </details>
+    <details>
+    <summary>expand for adding request body</summary>
+
+    1. Add a `@Post()` decorator to the `JediController` and include an empty `async create()` function call underneath it.
+    1. Add the a `@Body()` decorator to the params area of the `create` call and add the param `request: Jedi`.
+    1. Add the jedi object from the `POST` to the jedi array (after changing it to not be `const`)
+    1. Run using `npm run start:dev` and test the new `POST` route
+    </details>
