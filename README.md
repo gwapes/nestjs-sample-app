@@ -43,3 +43,9 @@ v0.1.0 We will be exploring `controllers` and what they are responsible for in a
     1. Create some hardcoded mock data for the new route to return.
     1. Send a Postman request to the new route and watch it work.
     </details>
+1. Modify existing `controllers` and add new ones to demonstrate passing data via request to the `controllers` -- `v0.1.3`
+    <details>
+    <summary>expand for steps</summary>
+
+    1. Remove the `app.controller.ts` from the `app.module.ts` file since we no longer need it (these basic setup files will be deleted later in this step)
+    </details>
