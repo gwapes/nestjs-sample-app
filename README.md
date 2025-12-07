@@ -18,7 +18,7 @@
 
 ## Steps
 > **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app later on
-1. Create a new controller with a simple GET route -- `v0.1.1`
+1. Create a new controller with a simple `GET` route -- `v0.1.1`
     <details>
     <summary>expand for steps</summary>
 
