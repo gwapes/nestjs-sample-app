@@ -10,7 +10,7 @@
 1. There is a [<ins>*great couple sections*</ins>](https://docs.nestjs.com/providers#dependency-injection) in the NestJS walkthrough about the frameworks dependency injection and different ways you can take advantage of it with `providers`.
 
 ## Steps
-1. Rearrange what we currently have into a `service` -- `v0.2.1`[🔗]()fix
+1. Rearrange what we currently have into a `service` -- `v0.2.1`[🔗](https://github.com/gwapes/nestjs-sample-app/compare/e43f845a1cd2bee78bb52e31dab6fa0592a288c9...2aa99791e64df23ca7a57a816c9d65ad221f2b7c?diff=split&w)
     <details>
     <summary>expand for steps</summary>
 
