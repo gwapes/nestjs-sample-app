@@ -18,7 +18,7 @@
 
 ## Steps
 > **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app later on
-1. Create a new controller with a simple `GET` route -- `v0.1.1` [🔗]([https://docs.nestjs.com/providers](https://github.com/gwapes/nestjs-sample-app/compare/0cd93743670cf2255c8266f30e3d481e94391e76...a5473ed2d720d4d515d996026e8bb83472db777d?diff=split&w))
+1. Create a new controller with a simple `GET` route -- `v0.1.1` [🔗](https://github.com/gwapes/nestjs-sample-app/compare/0cd93743670cf2255c8266f30e3d481e94391e76...a5473ed2d720d4d515d996026e8bb83472db777d?diff=split&w)
     <details>
     <summary>expand for steps</summary>
 
