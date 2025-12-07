@@ -18,7 +18,7 @@
 
 ## Steps
 > **Note:** I am only creating the second `controller` as I want to demonstrate calling both a REST and GraphQL based API from a NestJS app later on
-1. Create a new controller with a simple `GET` route -- `v0.1.1`
+1. Create a new controller with a simple `GET` route -- `v0.1.1` [🔗]([https://docs.nestjs.com/providers](https://github.com/gwapes/nestjs-sample-app/compare/0cd93743670cf2255c8266f30e3d481e94391e76...a5473ed2d720d4d515d996026e8bb83472db777d?diff=split&w))
     <details>
     <summary>expand for steps</summary>
 
@@ -32,7 +32,7 @@
     1. Add the new controller to the `app.module.ts` file
     1. Send a request to the apps new route via Postman
     </details>
-1. Create a second `controller` for a Magic the Gathering search -- `v0.1.2`
+1. Create a second `controller` for a Magic the Gathering search -- `v0.1.2` [🔗](https://github.com/gwapes/nestjs-sample-app/compare/a5473ed2d720d4d515d996026e8bb83472db777d...c57013827543576011b359e0afc622b7c89246e3?diff=split&w)
     <details>
     <summary>expand for steps</summary>
 
@@ -43,7 +43,7 @@
     1. Create some hardcoded mock data for the new route to return.
     1. Send a Postman request to the new route and watch it work.
     </details>
-1. Modify existing `controllers` and add new ones to demonstrate passing data via request to the `controllers` -- `v0.1.3`
+1. Modify existing `controllers` and add new ones to demonstrate passing data via request to the `controllers` -- `v0.1.3` [🔗](https://github.com/gwapes/nestjs-sample-app/compare/c57013827543576011b359e0afc622b7c89246e3...82d3d86a32c83ebbd929041d85edda11a9aebc83?diff=split&w) [`bonus diff`](https://github.com/gwapes/nestjs-sample-app/compare/82d3d86a32c83ebbd929041d85edda11a9aebc83...34e810ff7d927aeb3bc4a15f90bd500a389916b6?diff=split&w)
     <details>
     <summary>expand for adding url params</summary>
 
